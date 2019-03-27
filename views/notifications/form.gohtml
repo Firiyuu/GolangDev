@@ -1,0 +1,47 @@
+{{define "notifications/form"}}
+{{template "header" .}}
+{{template "dashboard/navbar" .}}
+<div class="container">
+  <div class="row">
+    {{template "dashboard/sidebar" .}}
+    <div class="col-sm-9" role="main">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form method="post">
+            <fieldset>
+              <legend>{{.Title}}</legend>
+              {{range .Flash}}
+                <div class="alert alert-danger">{{.}}</div><p>
+              {{end}}
+
+              
+              <input type="hidden" name="id" value="{{.Email.ID}}" >
+              <input type="hidden" name="_csrf" value="{{.Csrf}}">
+              
+              <div class="form-group">
+                <label class="control-label" for="title">Send to</label>
+                <input id="title" name="email" value="{{.Email.EmailTo}}" class="form-control" required="">
+              </div>
+
+              <div class="form-group">
+                <label class="control-label" for="ck-content">Content</label>
+                <input id="title" name="description" value="{{.Email.Description}}" class="form-control" required="">
+              </div>
+
+
+
+
+              <input type="submit" class="btn btn-primary" value="Submit">
+
+              <a class="btn btn-secondary" href="/admin/notifications/list">Cancel</a>
+
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/public/assets/ckeditor/build/ckeditor.js"></script>
+{{template "footer" .}}
+{{end}}

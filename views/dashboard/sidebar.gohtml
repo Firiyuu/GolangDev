@@ -1,0 +1,28 @@
+{{define "dashboard/sidebar"}}
+<aside class="col-sm-3">
+  <div class="well well-sm user-info">
+    <h5>User Profile</h5>
+    <div class="dropdown">
+
+      <div class="dropdown-menu" aria-labelledby="dropdownSettingsButton">
+        <a class="dropdown-item" href="/admin/users/{{activeUserID .Context}}/edit"><i class="fa fa-edit mr-3"></i>Edit profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out-alt mr-3"></i>Logout</a>
+      </div>
+    </div>
+    <span class="email">{{activeUserEmail .Context}}</span>
+  </div>
+
+  <h5>Navigation</h5>
+
+  <ul class="nav flex-column nav-pills">
+
+    <li class="nav-item">
+      <a class="nav-link {{isActiveLink .Context "notifications/list"}}" href="/admin/notifications/list"><i class="fa fa-pencil-alt mr-3"></i>Notifications Sent</a>
+    </li>
+
+
+
+  </ul>
+</aside>
+{{end}}

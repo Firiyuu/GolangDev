@@ -1,0 +1,22 @@
+{{define "notifications/notification"}}
+{{template "header" .}}
+{{template "navbar" .}}
+
+
+<h2>{{.Title}}</h2>
+
+ <p> What would you like to send?</p>
+  <form method="POST">
+      {{range .Flash}}
+        <div class="alert alert-danger">{{.}}</div><p>
+      {{end}}
+      <input type="hidden" name="_csrf" value="{{.Csrf}}">
+
+	  <input type="text" name="description"/>
+	  <input type="submit"/>
+  </form>
+
+<!--Embed the footer.html template at this location-->
+{{template "footer" .}}
+{{end}}
+
